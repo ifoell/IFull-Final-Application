@@ -1,3 +1,5 @@
 <resources>
     <string name="app_name">IFull Final Application</string>
+    <string name="tourism_name">Nama Tempat Pariwisata</string>
+    <string name="info">Info</string>
 </resources>
