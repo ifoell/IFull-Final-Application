@@ -3,7 +3,7 @@ package com.dicoding.picodiploma.ifullfinalapplication;
 public class CirebonTourism {
     private String name;
     private String info;
-    private String pic;
+    private int pic;
 
     public String getName() {
         return name;
@@ -21,11 +21,11 @@ public class CirebonTourism {
         this.info = info;
     }
 
-    public String getPic() {
+    public int getPic() {
         return pic;
     }
 
-    public void setPic(String pic) {
+    public void setPic(int pic) {
         this.pic = pic;
     }
 }

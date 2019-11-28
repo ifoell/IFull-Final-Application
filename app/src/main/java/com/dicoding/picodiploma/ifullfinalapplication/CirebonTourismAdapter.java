@@ -3,6 +3,8 @@ package com.dicoding.picodiploma.ifullfinalapplication;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
+import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
@@ -31,14 +33,26 @@ public class CirebonTourismAdapter extends RecyclerView.Adapter<CirebonTourismAd
         Glide.with(holder.itemView.getContext())
                 .load(cirebonTourism.getPic())
                 .apply(new RequestOptions().override(55,55))
-                .into(holder.)
+                .into(holder.imgPic);
+        holder.tvName.setText(cirebonTourism.getName());
+        holder.tvInfo.setText(cirebonTourism.getInfo());
     }
 
     @Override
     public int getItemCount() {
-        return 0;
+        return listTourism.size();
     }
 
-    public class CirebonTourismHolder {
+    public class CirebonTourismHolder extends RecyclerView.ViewHolder {
+        ImageView imgPic;
+        TextView tvName, tvInfo;
+
+        public CirebonTourismHolder(@NonNull View itemView) {
+            super(itemView);
+
+            imgPic = itemView.findViewById(R.id.img_item_photo);
+            tvName = itemView.findViewById(R.id.tv_item_name);
+            tvInfo = itemView.findViewById(R.id.tv_item_info);
+        }
     }
 }
