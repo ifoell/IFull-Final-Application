@@ -130,6 +130,7 @@ public class CirebonTourismData {
             cirebonTourism.setName(cirebonTourismName[position]);
             cirebonTourism.setInfo(cirebonTourisminfo[position]);
             cirebonTourism.setPic(cirebonTourismPic[position]);
+            list.add(cirebonTourism);
         }
         return list;
     }
