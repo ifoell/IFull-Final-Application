@@ -2,4 +2,8 @@
     <string name="app_name">IFull Final Application</string>
     <string name="tourism_name">Nama Tempat Pariwisata</string>
     <string name="info">Info</string>
+    <string name="my_name">Syaiful Haq Al Furuqi</string>
+    <string name="my_email">syaifulhaqalfuruqi@yahoo.com</string>
+    <string name="about">About</string>
+    <string name="home">Home</string>
 </resources>
