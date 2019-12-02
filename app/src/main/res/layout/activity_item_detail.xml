@@ -2,8 +2,56 @@
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/item_detail"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".ItemDetailActivity">
 
+    <ScrollView
+        android:id="@+id/sv_detail"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:scrollbars="vertical">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/cons_detail"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="12dp">
+
+            <ImageView
+                android:id="@+id/image_detail"
+                android:layout_width="match_parent"
+                android:layout_height="230dp"
+                android:layout_margin="12dp"
+                app:layout_constraintTop_toTopOf="parent"
+                android:src="@color/colorPrimary"/>
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:padding="24dp"
+                app:layout_constraintTop_toBottomOf="@id/image_detail">
+
+                <TextView
+                    android:id="@+id/nama_pariwisata"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:textStyle="bold"
+                    app:layout_constraintTop_toTopOf="parent"
+                    android:textSize="18sp"
+                    android:text="@string/tourism_name"/>
+
+                <TextView
+                    android:id="@+id/detail_pariwisata"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="12dp"
+                    app:layout_constraintTop_toBottomOf="@id/nama_pariwisata"
+                    tools:text="@tools:sample/lorem/random" />
+
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </ScrollView>
 </androidx.constraintlayout.widget.ConstraintLayout>
