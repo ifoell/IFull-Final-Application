@@ -1,5 +1,8 @@
 package com.dicoding.picodiploma.ifullfinalapplication;
 
+import android.app.Activity;
+import android.content.Context;
+import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -14,10 +17,15 @@ import com.bumptech.glide.request.RequestOptions;
 
 import java.util.ArrayList;
 
-public class CirebonTourismAdapter extends RecyclerView.Adapter<CirebonTourismAdapter.CirebonTourismHolder> {
+public class CirebonTourismAdapter extends RecyclerView.Adapter<CirebonTourismAdapter.CirebonTourismHolder>{
     private ArrayList<CirebonTourism> listTourism;
     public CirebonTourismAdapter(ArrayList<CirebonTourism> list) {
         this.listTourism = list;
+    }
+
+    private OnItemClickCallback onItemClickCallback;
+    public void setOnItemClickCallback(OnItemClickCallback onItemClickCallback) {
+        this.onItemClickCallback = onItemClickCallback;
     }
 
     @NonNull
@@ -28,7 +36,7 @@ public class CirebonTourismAdapter extends RecyclerView.Adapter<CirebonTourismAd
     }
 
     @Override
-    public void onBindViewHolder(@NonNull CirebonTourismHolder holder, int position) {
+    public void onBindViewHolder(@NonNull final CirebonTourismHolder holder, int position) {
         CirebonTourism cirebonTourism = listTourism.get(position);
         Glide.with(holder.itemView.getContext())
                 .load(cirebonTourism.getPic())
@@ -36,6 +44,16 @@ public class CirebonTourismAdapter extends RecyclerView.Adapter<CirebonTourismAd
                 .into(holder.imgPic);
         holder.tvName.setText(cirebonTourism.getName());
         holder.tvInfo.setText(cirebonTourism.getInfo());
+        holder.itemView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                onItemClickCallback.onItemClicked(listTourism.get(holder.getAdapterPosition()));
+            }
+        });
+    }
+
+    public interface OnItemClickCallback {
+        void onItemClicked(CirebonTourism data);
     }
 
     @Override

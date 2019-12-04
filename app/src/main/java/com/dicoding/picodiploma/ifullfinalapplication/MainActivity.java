@@ -5,10 +5,13 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.content.Intent;
+import android.graphics.Bitmap;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.widget.Toast;
 
+import java.io.ByteArrayOutputStream;
 import java.util.ArrayList;
 import java.util.Objects;
 
@@ -34,6 +37,13 @@ public class MainActivity extends AppCompatActivity {
         rvTourism.setLayoutManager(new LinearLayoutManager(this));
         CirebonTourismAdapter cirebonTourismAdapter = new CirebonTourismAdapter(list);
         rvTourism.setAdapter(cirebonTourismAdapter);
+
+        cirebonTourismAdapter.setOnItemClickCallback( new CirebonTourismAdapter.OnItemClickCallback() {
+            @Override
+            public void onItemClicked(CirebonTourism data) {
+                showSelectedTourism(data);
+            }
+        } );
     }
 
     private void setActionBarTitle(String title) {
@@ -51,6 +61,14 @@ public class MainActivity extends AppCompatActivity {
     public boolean onOptionsItemSelected(MenuItem item) {
         setMode(item.getItemId());
         return super.onOptionsItemSelected(item);
+    }
+
+    private void showSelectedTourism(CirebonTourism cirebonTourism) {
+        Intent detailIntent = new Intent( MainActivity.this, ItemDetailActivity.class );
+        detailIntent.putExtra(ItemDetailActivity.EXTRA_IMG, cirebonTourism.getPic());
+        detailIntent.putExtra( ItemDetailActivity.EXTRA_NAME, cirebonTourism.getName());
+        detailIntent.putExtra( ItemDetailActivity.EXTRA_DETAIL,cirebonTourism.getInfo());
+        startActivity( detailIntent );
     }
 
     public void setMode(int selectedMode) {
